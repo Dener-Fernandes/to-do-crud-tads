@@ -1,0 +1,36 @@
+{
+  "name": "to-do-crud",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "start:dev": "tsnd --respawn --transpile-only --ignore-watch node_modules ./src/application/server.ts",
+    "typeorm:create-entity": "cd ./src/data/entities && npx typeorm entity:create",
+    "typeorm:create-migration": "cd ./src/data/migrations && npx typeorm migration:create",
+    "typeorm": "npx typeorm-ts-node-commonjs migration:run --dataSource ./src/data/config/dataSource.ts"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "dotenv": "^16.4.5",
+    "express": "^4.21.1",
+    "express-session": "^1.18.1",
+    "keycloak-connect": "^26.0.5",
+    "pg": "^8.13.1",
+    "reflect-metadata": "^0.2.2",
+    "typeorm": "^0.3.20"
+  },
+  "devDependencies": {
+    "@eslint/js": "^9.15.0",
+    "@types/express": "^5.0.0",
+    "@types/keycloak-connect": "^7.0.0",
+    "@types/node": "^22.9.1",
+    "eslint": "^9.15.0",
+    "eslint-config-prettier": "^9.1.0",
+    "prettier": "^3.3.3",
+    "ts-node": "^10.9.2",
+    "ts-node-dev": "^2.0.0",
+    "typescript": "^5.6.3"
+  }
+}
