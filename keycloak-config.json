@@ -1,0 +1,9 @@
+{
+    "realm": "trabalho-pratico",
+    "auth-server-url": "https://tdsoft-auth.hsborges.dev",
+    "ssl-required": "external",
+    "resource": "to-do-crud-client",
+    "public-client": true,
+    "confidential-port": 0
+  }
+  
