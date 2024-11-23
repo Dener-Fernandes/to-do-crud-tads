@@ -8,7 +8,7 @@ import {
 import { User } from "./User";
 
 @Entity()
-export class Task {
+class Task {
   @PrimaryGeneratedColumn({ name: "task_id" })
   taskId: number;
 
@@ -19,3 +19,5 @@ export class Task {
   // @JoinColumn({ name: "user_id" })
   // user: User;
 }
+
+export { Task };

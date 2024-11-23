@@ -1,7 +1,7 @@
 import express from "express";
 import session from "express-session";
 import Keycloak from "keycloak-connect";
-// import { routes } from "./routes";
+import { routes } from "./routes";
 
 import "reflect-metadata";
 
@@ -32,6 +32,6 @@ import keycloakConfig from "./keycloak-config.json";
 
 app.use(express.json());
 
-// app.use("/to-do-crud", routes);
+app.use("/to-do-crud", routes);
 
 export { app };
