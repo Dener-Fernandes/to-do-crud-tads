@@ -46,7 +46,7 @@ class TaskController {
       description,
     });
 
-    response.status(201).json(task);
+    response.status(200).json(task);
   }
 
   async deleteTask(request: Request, response: Response) {

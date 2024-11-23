@@ -1,0 +1,172 @@
+{
+  "openapi": "3.0.0",
+  "info": {
+    "title": "Example API",
+    "version": "1.0.0",
+    "description": "This is an example API using Express and Swagger with TypeScript."
+  },
+  "servers": [
+    {
+      "url": "http://localhost:8080/to-do-crud"
+    }
+  ],
+  "paths": {
+    "/tasks": {
+      "post": {
+        "tags": ["Tasks"],
+        "summary": "Creates a new task",
+        "requestBody": {
+          "required": true,
+          "content": {
+            "application/json": {
+              "schema": {
+                "type": "object",
+                "properties": {
+                  "description": {
+                    "type": "string"
+                  }
+                }
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "Task created successfully.",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "properties": {
+                    "taskId": {
+                      "type": "integer",
+                      "example": 1
+                    },
+                    "description": {
+                      "type": "string",
+                      "example": "Task description"
+                    }
+                  }
+                }
+              }
+            }
+          }
+        }
+      },
+      "get": {
+        "tags": ["Tasks"],
+        "summary": "Returns a task by id",
+        "parameters": [
+          {
+            "name": "id",
+            "in": "query",
+            "required": true,
+            "schema": {
+              "type": "number",
+              "example": 1
+            },
+            "description": "Task id"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Success",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "properties": {
+                    "taskId": {
+                      "type": "integer",
+                      "example": 1
+                    },
+                    "description": {
+                      "type": "string",
+                      "example": "Task description"
+                    }
+                  }
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/tasks/{id}": {
+      "put": {
+        "tags": ["Tasks"],
+        "summary": "Updates an existing task by id",
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "number",
+              "example": 1
+            },
+            "description": "Task id"
+          }
+        ],
+        "requestBody": {
+          "required": true,
+          "content": {
+            "application/json": {
+              "schema": {
+                "type": "object",
+                "properties": {
+                  "description": {
+                    "type": "string"
+                  }
+                }
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "Task updated successfully.",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "properties": {
+                    "taskId": {
+                      "type": "integer",
+                      "example": 1
+                    },
+                    "description": {
+                      "type": "string",
+                      "example": "Updated task description"
+                    }
+                  }
+                }
+              }
+            }
+          }
+        }
+      },
+      "delete": {
+        "tags": ["Tasks"],
+        "summary": "Deletes a task by id",
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "number",
+              "example": 1
+            },
+            "description": "Task id"
+          }
+        ],
+        "responses": {
+          "204": {
+            "description": "Task deleted successfully."
+          }
+        }
+      }
+    }
+  }
+}

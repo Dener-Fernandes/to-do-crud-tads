@@ -2,6 +2,9 @@ import express from "express";
 import session from "express-session";
 import Keycloak from "keycloak-connect";
 import { routes } from "./routes";
+import swaggerDoc from "./docs/swaggerDoc.json";
+
+import swaggerUi from "swagger-ui-express";
 
 import "reflect-metadata";
 
@@ -32,6 +35,7 @@ import keycloakConfig from "./keycloak-config.json";
 
 app.use(express.json());
 
+app.use("/api-docs", swaggerUi.serve, swaggerUi.setup(swaggerDoc));
 app.use("/to-do-crud", routes);
 
 export { app };
