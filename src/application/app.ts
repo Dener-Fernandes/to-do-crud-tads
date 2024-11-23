@@ -25,10 +25,10 @@ app.use(
 
 // Configuração do Keycloak
 import keycloakConfig from "./keycloak-config.json";
-const keycloak = new Keycloak({ store: memoryStore }, keycloakConfig);
+// const keycloak = new Keycloak({ store: memoryStore }, keycloakConfig);
 
 // Middleware do Keycloak
-app.use(keycloak.middleware());
+// app.use(keycloak.middleware());
 
 app.use(express.json());
 
