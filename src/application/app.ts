@@ -3,9 +3,7 @@ import session from "express-session";
 import Keycloak from "keycloak-connect";
 import { routes } from "./routes";
 import swaggerDoc from "./docs/swaggerDoc.json";
-
 import swaggerUi from "swagger-ui-express";
-
 import { protectMiddleware } from "./middlewares/protectMiddleware";
 import "reflect-metadata";
 import dotenv from "dotenv";
@@ -33,6 +31,6 @@ app.use(keycloak.middleware());
 app.use(express.json());
 
 app.use("/api-docs", swaggerUi.serve, swaggerUi.setup(swaggerDoc));
-app.use("/to-do-crud", routes);
+app.use("/to-do-crud", protectMiddleware, routes);
 
 export { app };
