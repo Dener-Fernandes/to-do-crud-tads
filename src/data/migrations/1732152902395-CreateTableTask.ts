@@ -2,7 +2,6 @@ import {
   MigrationInterface,
   QueryRunner,
   Table,
-  TableForeignKey,
 } from "typeorm";
 
 export class CreateTableTask1732152902395 implements MigrationInterface {
@@ -23,28 +22,12 @@ export class CreateTableTask1732152902395 implements MigrationInterface {
             type: "text",
             isNullable: false,
           },
-          // {
-          //   name: "user_id",
-          //   type: "int",
-          //   isNullable: true, // Relacionamento com o User pode ser opcional
-          // },
         ],
       }),
     );
-
-    // await queryRunner.createForeignKeys("task", [
-    //   new TableForeignKey({
-    //     name: "fk_user_id",
-    //     columnNames: ["user_id"],
-    //     referencedColumnNames: ["user_id"],
-    //     referencedTableName: "user",
-    //     onDelete: "CASCADE",
-    //   }),
-    // ]);
   }
 
   public async down(queryRunner: QueryRunner): Promise<void> {
-    // await queryRunner.dropForeignKey("task", "fk_user_id");
     await queryRunner.dropTable("task");
   }
 }

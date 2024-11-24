@@ -12,7 +12,6 @@ dotenv.config({ path: "./.env" });
 
 const app = express();
 
-// Configuração de sessões
 const memoryStore = new session.MemoryStore();
 app.use(
   session({
@@ -23,11 +22,9 @@ app.use(
   }),
 );
 
-// Keycloak
 const keycloak = new Keycloak({ store: memoryStore }, "./keycloak-config.json");
 app.use(keycloak.middleware());
 
-// JSON Parser
 app.use(express.json());
 
 app.use("/api-docs", swaggerUi.serve, swaggerUi.setup(swaggerDoc));
