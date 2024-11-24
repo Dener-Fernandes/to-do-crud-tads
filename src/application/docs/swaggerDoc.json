@@ -1,13 +1,27 @@
 {
   "openapi": "3.0.0",
   "info": {
-    "title": "Example API",
+    "title": "To-do TADS",
     "version": "1.0.0",
-    "description": "This is an example API using Express and Swagger with TypeScript."
+    "description": "This is a Swagger for TADS."
   },
   "servers": [
     {
       "url": "http://localhost:8080/to-do-crud"
+    }
+  ],
+  "components": {
+    "securitySchemes": {
+      "bearerAuth": {
+        "type": "http",
+        "scheme": "bearer",
+        "bearerFormat": "JWT"
+      }
+    }
+  },
+  "security": [
+    {
+      "bearerAuth": []
     }
   ],
   "paths": {
@@ -16,15 +30,6 @@
         "tags": ["Tasks"],
         "summary": "Creates a new task",
         "parameters": [
-          {
-            "in": "header",
-            "name": "Authorization",
-            "description": "Token Bearer",
-            "required": false,
-            "schema": {
-              "type": "string"
-            }
-          }
         ],
         "requestBody": {
           "required": true,
@@ -69,15 +74,6 @@
         "summary": "Returns a task by id",
         "parameters": [
           {
-            "in": "header",
-            "name": "Authorization",
-            "description": "Token Bearer",
-            "required": false,
-            "schema": {
-              "type": "string"
-            }
-          },
-          {
             "name": "id",
             "in": "query",
             "required": true,
@@ -117,15 +113,6 @@
         "tags": ["Tasks"],
         "summary": "Returns a list of tasks",
         "parameters": [
-          {
-            "in": "header",
-            "name": "Authorization",
-            "description": "Token Bearer",
-            "required": false,
-            "schema": {
-              "type": "string"
-            }
-          }
         ],
         "responses": {
           "200": {
@@ -159,15 +146,6 @@
         "tags": ["Tasks"],
         "summary": "Updates an existing task by id",
         "parameters": [
-          {
-            "in": "header",
-            "name": "Authorization",
-            "description": "Token Bearer",
-            "required": false,
-            "schema": {
-              "type": "string"
-            }
-          },
           {
             "name": "id",
             "in": "path",
@@ -221,15 +199,6 @@
         "tags": ["Tasks"],
         "summary": "Deletes a task by id",
         "parameters": [
-          {
-            "in": "header",
-            "name": "Authorization",
-            "description": "Token Bearer",
-            "required": false,
-            "schema": {
-              "type": "string"
-            }
-          },
           {
             "name": "id",
             "in": "path",
