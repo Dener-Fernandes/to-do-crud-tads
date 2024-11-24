@@ -15,6 +15,17 @@
       "post": {
         "tags": ["Tasks"],
         "summary": "Creates a new task",
+        "parameters": [
+          {
+            "in": "header",
+            "name": "Authorization",
+            "description": "Token Bearer",
+            "required": false,
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
         "requestBody": {
           "required": true,
           "content": {
@@ -58,6 +69,15 @@
         "summary": "Returns a task by id",
         "parameters": [
           {
+            "in": "header",
+            "name": "Authorization",
+            "description": "Token Bearer",
+            "required": false,
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
             "name": "id",
             "in": "query",
             "required": true,
@@ -96,6 +116,17 @@
       "get": {
         "tags": ["Tasks"],
         "summary": "Returns a list of tasks",
+        "parameters": [
+          {
+            "in": "header",
+            "name": "Authorization",
+            "description": "Token Bearer",
+            "required": false,
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
         "responses": {
           "200": {
             "description": "List of tasks",
@@ -128,6 +159,15 @@
         "tags": ["Tasks"],
         "summary": "Updates an existing task by id",
         "parameters": [
+          {
+            "in": "header",
+            "name": "Authorization",
+            "description": "Token Bearer",
+            "required": false,
+            "schema": {
+              "type": "string"
+            }
+          },
           {
             "name": "id",
             "in": "path",
@@ -181,6 +221,15 @@
         "tags": ["Tasks"],
         "summary": "Deletes a task by id",
         "parameters": [
+          {
+            "in": "header",
+            "name": "Authorization",
+            "description": "Token Bearer",
+            "required": false,
+            "schema": {
+              "type": "string"
+            }
+          },
           {
             "name": "id",
             "in": "path",
