@@ -1,23 +1,12 @@
-import {
-  Entity,
-  PrimaryGeneratedColumn,
-  Column,
-  ManyToOne,
-  JoinColumn,
-} from "typeorm";
-import { User } from "./User";
+import { Entity, PrimaryGeneratedColumn, Column } from "typeorm";
 
 @Entity()
 class Task {
   @PrimaryGeneratedColumn({ name: "task_id" })
-  taskId: number;
+  taskId!: number;
 
   @Column({ type: "text", nullable: false })
-  description: string;
-
-  // @ManyToOne(() => User, (user) => user.tasks, { onDelete: "CASCADE" })
-  // @JoinColumn({ name: "user_id" })
-  // user: User;
+  description!: string;
 }
 
 export { Task };
