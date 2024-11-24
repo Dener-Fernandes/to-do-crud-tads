@@ -22,6 +22,14 @@ class TaskRepository implements ITaskRepository {
     return task;
   }
 
+  async listAll(): Promise<ITask[] | null> {
+    const tasks = await this.taskRepository.find();
+
+    if (!tasks.length) return null;
+
+    return tasks;
+  }
+
   async update(task: ITask): Promise<ITask> {
     return await this.taskRepository.save(task);
   }

@@ -4,7 +4,7 @@ import { ITask } from "../interfaces/ITask";
 class FindTaskUeCase {
   constructor(private taskRepository: ITaskRepository) {}
 
-  async execute(id: number): Promise<ITask> {
+  async execute(id: number): Promise<ITask | null> {
     return await this.taskRepository.findById(id);
   }
 }

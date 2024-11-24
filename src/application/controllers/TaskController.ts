@@ -7,6 +7,7 @@ import { CreateTaskUseCase } from "../../domain/useCases/CreateTaskUseCase";
 import { FindTaskUeCase } from "../../domain/useCases/FindTaskUseCase";
 import { UpdateTaskUeCase } from "../../domain/useCases/UpdateTaskUeCase";
 import { DeleteTaskUeCase } from "../../domain/useCases/DeleteTaskUseCase";
+import { ListTasksUseCase } from "../../domain/useCases/ListTasksUseCase";
 
 class TaskController {
   async createTask(request: Request, response: Response) {
@@ -31,6 +32,16 @@ class TaskController {
     const task = await findTaskUseCase.execute(Number(id));
 
     response.status(200).json(task);
+  }
+
+  async listTasks(request: Request, response: Response) {
+    const taskRepository = new TaskRepository(dataSource.getRepository(Task));
+
+    const listTasksUseCase = new ListTasksUseCase(taskRepository);
+
+    const tasks = await listTasksUseCase.execute();
+
+    response.status(200).json(tasks);
   }
 
   async updateTask(request: Request, response: Response) {
