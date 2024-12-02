@@ -1,7 +1,11 @@
 import { Request, Response, NextFunction } from "express";
 import jwt from "jsonwebtoken";
 
-export const decryptTokenMiddleware = (req: Request, res: Response, next: NextFunction): void => {
+export const decryptTokenMiddleware = (
+  req: Request,
+  res: Response,
+  next: NextFunction,
+): void => {
   console.log("Middleware de decodificação iniciado");
 
   const authHeader = req.headers.authorization;

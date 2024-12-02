@@ -1,8 +1,4 @@
-import {
-  MigrationInterface,
-  QueryRunner,
-  Table,
-} from "typeorm";
+import { MigrationInterface, QueryRunner, Table } from "typeorm";
 
 export class CreateTableTask1732152902395 implements MigrationInterface {
   public async up(queryRunner: QueryRunner): Promise<void> {
@@ -20,6 +16,11 @@ export class CreateTableTask1732152902395 implements MigrationInterface {
           {
             name: "description",
             type: "text",
+            isNullable: false,
+          },
+          {
+            name: "user_email",
+            type: "varchar",
             isNullable: false,
           },
         ],

@@ -22,14 +22,13 @@ app.use(
   }),
 );
 
-// const keycloak = new Keycloak({ store: memoryStore }, "./keycloak-config.json");
-// app.use(keycloak.middleware());
+const keycloak = new Keycloak({ store: memoryStore }, "./keycloak-config.json");
+app.use(keycloak.middleware());
 
 app.use(express.json());
 
 app.use("/api-docs", swaggerUi.serve, swaggerUi.setup(swaggerDoc));
 
-//app.use("/to-do-crud", protectMiddleware, routes);
-app.use("/to-do-crud", routes);
+app.use("/to-do-crud", protectMiddleware, routes);
 
 export { app };

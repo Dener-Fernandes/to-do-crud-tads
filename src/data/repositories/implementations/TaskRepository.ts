@@ -10,10 +10,11 @@ class TaskRepository implements ITaskRepository {
     return await this.taskRepository.save(task);
   }
 
-  async findById(id: number): Promise<ITask | null> {
+  async findById(id: number, userEmail: string): Promise<ITask | null> {
     const task = await this.taskRepository.findOne({
       where: {
         taskId: id,
+        userEmail,
       },
     });
 
@@ -22,8 +23,12 @@ class TaskRepository implements ITaskRepository {
     return task;
   }
 
-  async listAll(): Promise<ITask[] | null> {
-    const tasks = await this.taskRepository.find();
+  async listAll(userEmail: string): Promise<ITask[] | null> {
+    const tasks = await this.taskRepository.find({
+      where: {
+        userEmail,
+      },
+    });
 
     if (!tasks.length) return null;
 
@@ -34,8 +39,8 @@ class TaskRepository implements ITaskRepository {
     return await this.taskRepository.save(task);
   }
 
-  async delete(id: number): Promise<void> {
-    await this.taskRepository.delete({ taskId: id });
+  async delete(id: number, userEmail: string): Promise<void> {
+    await this.taskRepository.delete({ taskId: id, userEmail });
   }
 }
 
