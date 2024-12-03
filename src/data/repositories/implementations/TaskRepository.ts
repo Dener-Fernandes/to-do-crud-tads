@@ -35,8 +35,8 @@ class TaskRepository implements ITaskRepository {
     return tasks;
   }
 
-  async update(task: ITask): Promise<void> {
-    await this.taskRepository.update(task.userEmail, task);
+  async update(task: ITask): Promise<ITask> {
+    return await this.taskRepository.save(task);
   }
 
   async delete(id: number, userEmail: string): Promise<void> {
