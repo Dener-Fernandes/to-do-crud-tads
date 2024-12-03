@@ -5,7 +5,9 @@ class UpdateTaskUeCase {
   constructor(private taskRepository: ITaskRepository) {}
 
   async execute(task: ITask): Promise<ITask> {
-    return await this.taskRepository.update(task);
+    await this.taskRepository.update(task);
+
+    return task;
   }
 }
 
